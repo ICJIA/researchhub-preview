@@ -104,22 +104,27 @@ function getArticlsQuery(params) {
       slug
       external
       date
-      type
       categories
       tags
       splash
       thumbnail
       abstract
+      authors
       images
       markdown
       citation
       doi
       funding
-      apps (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
+      mainfiletype
+      mainfile {
+        name
+        url
       }
-      authors {
+      extrafile {
+        name
+        url
+      }
+      apps (sort: "date:desc", where: { status: "published" }) {
         title
         slug
       }
@@ -143,14 +148,16 @@ function getDatasetsQuery(params) {
       tags
       sources
       timeperiod
-      agegroup
       unit
       variables
       description
       notes
       citation
       funding
-      datafilename
+      datafile {
+        name
+        url
+      }
       apps (sort: "date:desc", where: { status: "published" }) {
         title
         slug
