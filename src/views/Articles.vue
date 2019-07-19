@@ -4,12 +4,13 @@
       <RHArticleCard id="preview-check" v-if="item" :item="item" />
     </template>
     <template v-slot:view>
-      <RHArticleView v-if="item" :item="item" />
+      <RHArticleView v-if="item" :item="item" :downloader="downloader" />
     </template>
   </PreviewLayout>
 </template>
 
 <script>
+import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchArticleBySlug } from '@/services/client'
 const PreviewLayout = () => import('@/components/PreviewLayout')
@@ -35,6 +36,13 @@ export default {
     this.item = store.ready
       ? store.articles.filter(el => el.slug === slug)[0]
       : await fetchArticleBySlug(slug)
+  },
+  methods: {
+    async downloader(type) {
+      const file = this.item[`${type}file`]
+      const url = `${process.env.VUE_APP_API_BASE_URL}/${file.url}`
+      saveAs(url, decodeURI(file.name))
+    }
   }
 }
 </script>

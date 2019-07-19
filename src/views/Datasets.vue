@@ -4,12 +4,13 @@
       <RHDatasetCard id="preview-check" v-if="item" :item="item" />
     </template>
     <template v-slot:view>
-      <RHDatasetView v-if="item" :item="item" />
+      <RHDatasetView v-if="item" :item="item" :downloader="downloader" />
     </template>
   </PreviewLayout>
 </template>
 
 <script>
+import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchDatasetBySlug } from '@/services/client'
 const PreviewLayout = () => import('@/components/PreviewLayout')
@@ -36,6 +37,13 @@ export default {
       this.item = store.datasets.filter(el => el.slug === slug)[0]
     } else {
       this.item = await fetchDatasetBySlug(slug)
+    }
+  },
+  methods: {
+    async downloader() {
+      const file = this.item.datafile
+      const url = `${process.env.VUE_APP_API_BASE_URL}/${file.url}`
+      saveAs(url, decodeURI(file.name))
     }
   }
 }
