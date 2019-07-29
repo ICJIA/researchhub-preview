@@ -50,9 +50,14 @@ export default {
   },
   async mounted() {
     if (!store.ready) {
-      mutations.setApps(await fetchApps())
-      mutations.setArticles(await fetchArticles())
-      mutations.setDatasets(await fetchDatasets())
+      const [apps, articles, datasets] = await Promise.all([
+        fetchApps(),
+        fetchArticles(),
+        fetchDatasets()
+      ])
+      mutations.setApps(apps)
+      mutations.setArticles(articles)
+      mutations.setDatasets(datasets)
       mutations.setReady(true)
     }
   }

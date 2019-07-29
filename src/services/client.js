@@ -1,5 +1,6 @@
 import axios from 'axios'
 import NProgress from 'nprogress'
+import { appFields, articleFields, datasetFields } from '@/consts/queryFields'
 
 const client = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL
@@ -26,146 +27,75 @@ export {
   fetchDatasets
 }
 
-async function fetchAppBySlug(slug) {
-  const params = `where: { slug: "${slug}", status: "submitted" }`
-  const data = await fetchData(getAppsQuery(params))
-  return data.apps[0]
-}
+/**
+ * @param {String} slug
+ */
+const fetchAppBySlug = async slug =>
+  await fetchOneBySlug('apps')({ fields: appFields, slug })
 
-async function fetchApps() {
-  const params = 'sort: "date:desc", where: { status: "submitted" }'
-  const data = await fetchData(getAppsQuery(params))
-  return data.apps
-}
+const fetchApps = async () => await fetchList('apps')({ fields: appFields })
 
-async function fetchArticleBySlug(slug) {
-  const params = `where: { slug: "${slug}", status: "submitted" }`
-  const data = await fetchData(getArticlsQuery(params))
-  return data.articles[0]
-}
+/**
+ * @param {String} slug
+ */
+const fetchArticleBySlug = async slug =>
+  await fetchOneBySlug('articles')({ fields: articleFields, slug })
 
-async function fetchArticles() {
-  const params = 'sort: "date:desc", where: { status: "submitted" }'
-  const data = await fetchData(getArticlsQuery(params))
-  return data.articles
-}
+const fetchArticles = async () =>
+  await fetchList('articles')({ fields: articleFields })
 
-async function fetchDatasetBySlug(slug) {
-  const params = `where: { slug: "${slug}", status: "submitted" }`
-  const data = await fetchData(getArticlsQuery(params))
-  return data.datasets[0]
-}
+/**
+ * @param {String} slug
+ */
+const fetchDatasetBySlug = async slug =>
+  await fetchOneBySlug('datasets')({ fields: datasetFields, slug })
 
-async function fetchDatasets() {
-  const params = 'sort: "date:desc", where: { status: "submitted" }'
-  const data = await fetchData(getDatasetsQuery(params))
-  return data.datasets
-}
+const fetchDatasets = async () =>
+  await fetchList('datasets')({ fields: datasetFields })
 
-async function fetchData(query) {
-  const res = await client
+/**
+ * Fetch a publisehd content with the matching slug.
+ * @param {String} contentType
+ * @param {[String]} fields [String]
+ * @param {String} slug String
+ */
+const fetchOneBySlug = contentType => async ({ fields, slug }) =>
+  (await fetchData(contentType)({
+    params: `where: { slug: "${slug}", status: "submitted" }`,
+    fields
+  }))[0]
+
+/**
+ * Fetch a list of publisehd contents.
+ * @param {String} contentType
+ * @param {String} params
+ * @param {[String]} fields [String]
+ */
+const fetchList = contentType => async ({ fields }) =>
+  await fetchData(contentType)({
+    params: 'sort: "date:desc", where: { status: "submitted" }',
+    fields
+  })
+
+/**
+ * Fetch data from API server.
+ * @param {String} contentType
+ * @param {String} params String
+ * @param {String} fields [String]
+ */
+const fetchData = contentType => async ({ params, fields }) =>
+  await fetchQueryResult(contentType)(
+    `{\n  ${contentType} (${params}) {${fields.join('\n')}\n  }\n}`
+  )
+
+/**
+ * Fetch graphql query results from API server.
+ * @param {String} contentType
+ * @param {String} query
+ * @return {(query:String) => Promise<Object>}
+ */
+const fetchQueryResult = contentType => async query =>
+  await client
     .post('graphql', { query })
     .catch(err => console.error(err))
-  return res.data.data
-}
-
-function getAppsQuery(params) {
-  return `{
-    apps (${params}) {
-      title
-      slug
-      external
-      date
-      categories
-      tags
-      image
-      contributors
-      description
-      url
-      citation
-      funding
-      articles (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-      datasets (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-    }
-  }`
-}
-
-function getArticlsQuery(params) {
-  return `{
-    articles (${params}) {
-      _id
-      title
-      slug
-      external
-      date
-      categories
-      tags
-      splash
-      thumbnail
-      abstract
-      authors
-      images
-      markdown
-      citation
-      doi
-      funding
-      mainfiletype
-      mainfile {
-        name
-        url
-      }
-      extrafile {
-        name
-        url
-      }
-      apps (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-      datasets (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-    }
-  }`
-}
-
-function getDatasetsQuery(params) {
-  return `{
-    datasets (${params}) {
-      _id
-      title
-      slug
-      external
-      date
-      categories
-      tags
-      sources
-      timeperiod
-      unit
-      variables
-      description
-      notes
-      citation
-      funding
-      datafile {
-        name
-        url
-      }
-      apps (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-      articles (sort: "date:desc", where: { status: "published" }) {
-        title
-        slug
-      }
-    }
-  }`
-}
+    .then(res => res.data.data[contentType])
