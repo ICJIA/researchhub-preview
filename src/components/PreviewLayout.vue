@@ -1,30 +1,22 @@
 <template>
-  <div>
-    <v-layout justify-center row wrap>
-      <v-flex xs12 sm8 offset-sm2>
-        <Warning />
-      </v-flex>
-      <v-flex xs12 sm2>
-        <v-switch v-model="view" :label="`Full view: ${view.toString()}`" />
-      </v-flex>
-    </v-layout>
+  <BaseViewLayout
+    :view.sync="view"
+    :fullView="contentType === 'article' && view"
+  >
+    <template>
+      <div v-show="view">
+        <v-flex v-if="contentType === 'article'" xs12>
+          <slot name="view"></slot>
+        </v-flex>
 
-    <div v-show="view">
-      <v-flex v-if="contentType === 'article'" xs12>
-        <slot name="view"></slot>
-      </v-flex>
-
-      <v-container v-else>
-        <v-layout justify-center>
+        <v-layout v-else justify-center>
           <v-flex xs12 sm10 md8>
             <slot name="view"></slot>
           </v-flex>
         </v-layout>
-      </v-container>
-    </div>
+      </div>
 
-    <v-container v-show="!view">
-      <v-layout row wrap justify-center>
+      <v-layout v-show="!view" row wrap justify-center>
         <v-flex xs12 sm10 xl8>
           <v-layout v-if="contentType === 'app'" row wrap justify-center>
             <v-flex xs12 sm6 lg4>
@@ -43,23 +35,23 @@
           </v-layout>
         </v-flex>
       </v-layout>
-    </v-container>
-  </div>
+    </template>
+  </BaseViewLayout>
 </template>
 
 <script>
-const Warning = () => import('@/components/Warning')
+const BaseViewLayout = () => import('@/components/BaseViewLayout')
 
 export default {
   components: {
-    Warning
+    BaseViewLayout
   },
   props: {
     contentType: String
   },
   data() {
     return {
-      view: false
+      view: true
     }
   }
 }
