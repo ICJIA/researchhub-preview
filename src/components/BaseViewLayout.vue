@@ -1,26 +1,6 @@
 <template>
   <div class="font-lato">
-    <div class="view-title">
-      <v-container class="py-3">
-        <v-layout justify-center row wrap>
-          <v-flex xs12 sm8 xl6>
-            <h3 class="light pb-0">
-              <template>{{ 'ICJIA Research Hub' }}</template>
-              <v-icon color="white">chevron_right</v-icon>
-              <template>{{ 'Preview' }}</template>
-            </h3>
-          </v-flex>
-
-          <v-flex xs12 sm2>
-            <v-layout justify-end v-if="view !== null">
-              <v-btn class="ma-0" color="white" small outline @click="onClick">
-                <template>{{ view ? 'show card' : 'show view' }}</template>
-              </v-btn>
-            </v-layout>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </div>
+    <BaseViewTitle :view="view" @toggle-view="onToggleView" />
 
     <div class="text-xs-center my-2">
       <v-icon color="warning">warning</v-icon>
@@ -37,7 +17,12 @@
 </template>
 
 <script>
+const BaseViewTitle = () => import('@/components/BaseViewTitle')
+
 export default {
+  components: {
+    BaseViewTitle
+  },
   props: {
     view: {
       type: Boolean,
@@ -49,7 +34,7 @@ export default {
     }
   },
   methods: {
-    onClick() {
+    onToggleView() {
       this.$emit('update:view', !this.view)
     }
   }
