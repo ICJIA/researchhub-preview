@@ -30,12 +30,17 @@ export default {
       item: null
     }
   },
-  async mounted() {
-    const slug = this.$route.params.slug.split('/').pop()
-    if (store.ready) {
-      this.item = store.apps.filter(el => el.slug === slug)[0]
-    } else {
-      this.item = await fetchAppBySlug(slug)
+  async created() {
+    try {
+      const slug = this.$route.params.slug.split('/').pop()
+      const app = store.ready
+        ? store.apps.filter(el => el.slug === slug)[0]
+        : await fetchAppBySlug(slug)
+
+      if (app) this.item = app
+      else throw 'Error: Item not found.'
+    } catch {
+      this.$router.push({ name: '404' })
     }
   }
 }
