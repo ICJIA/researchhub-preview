@@ -1,10 +1,20 @@
 <template>
   <PreviewLayout contentType="dataset">
     <template v-slot:card>
-      <RHDatasetCard id="preview-check" v-if="item" :item="item" />
+      <RHDatasetCard
+        id="preview-check"
+        v-if="item"
+        :item="item"
+        :preview="true"
+      />
     </template>
     <template v-slot:view>
-      <RHDatasetView v-if="item" :item="item" :downloader="downloader" />
+      <RHDatasetView
+        v-if="item"
+        :item="item"
+        :downloader="downloader"
+        :preview="true"
+      />
     </template>
   </PreviewLayout>
 </template>

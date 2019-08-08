@@ -1,10 +1,20 @@
 <template>
   <PreviewLayout contentType="article">
     <template v-slot:card>
-      <RHArticleCard id="preview-check" v-if="item" :item="item" />
+      <RHArticleCard
+        id="preview-check"
+        v-if="item"
+        :item="item"
+        :preview="true"
+      />
     </template>
     <template v-slot:view>
-      <RHArticleView v-if="item" :item="item" :downloader="downloader" />
+      <RHArticleView
+        v-if="item"
+        :item="item"
+        :downloader="downloader"
+        :preview="true"
+      />
     </template>
   </PreviewLayout>
 </template>

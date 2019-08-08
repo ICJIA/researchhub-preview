@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <h2>{{ contentTypeUpper }}</h2>
     <ul>
       <li v-for="result in results" :key="result.title" class="my-2 font-lato">
@@ -15,7 +15,7 @@
         </span>
       </li>
     </ul>
-  </v-container>
+  </div>
 </template>
 
 <script>

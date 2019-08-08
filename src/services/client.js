@@ -24,7 +24,8 @@ export {
   fetchArticleBySlug,
   fetchArticles,
   fetchDatasetBySlug,
-  fetchDatasets
+  fetchDatasets,
+  healthCheck
 }
 
 /**
@@ -97,5 +98,14 @@ const fetchData = contentType => async ({ params, fields }) =>
 const fetchQueryResult = contentType => async query =>
   await client
     .post('graphql', { query })
+    .then(({ data }) => data.data[contentType])
     .catch(err => console.error(err))
-    .then(res => res.data.data[contentType])
+
+/**
+ * Check API server health.
+ */
+const healthCheck = async (timeout = 2000) =>
+  await client
+    .head(`/`, { timeout })
+    .then(res => res.status === 200)
+    .catch(() => false)

@@ -1,10 +1,10 @@
 <template>
   <PreviewLayout contentType="app">
     <template v-slot:card>
-      <RHAppCard id="preview-check" v-if="item" :item="item" />
+      <RHAppCard id="preview-check" v-if="item" :item="item" :preview="true" />
     </template>
     <template v-slot:view>
-      <RHAppView v-if="item" :item="item" />
+      <RHAppView v-if="item" :item="item" :preview="true" />
     </template>
   </PreviewLayout>
 </template>
