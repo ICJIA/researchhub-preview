@@ -28,12 +28,13 @@ const router = new Router({
       component: () => import('./views/Datasets')
     },
     {
-      path: '/404',
+      path: '/page-not-found',
+      name: '404',
       component: () => import('@/views/404')
     },
     {
       path: '*',
-      component: () => import('@/views/404')
+      redirect: { name: '404' }
     }
   ]
 })

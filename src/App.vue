@@ -1,14 +1,16 @@
 <template>
   <v-app>
-    <RHBaseToolbar>
+    <RHBaseToolbar :menu="false">
       <template v-slot:titleExtra>
         <span class="light"> Preview</span>
       </template>
     </RHBaseToolbar>
 
-    <router-view v-if="alive" />
+    <v-content>
+      <router-view v-if="alive" />
 
-    <ServerError v-else />
+      <ServerError v-else />
+    </v-content>
 
     <RHFooter :agency="agency" :github="github" />
   </v-app>
@@ -38,7 +40,7 @@ export default {
       },
       github: {
         url: 'https://github.com/icjia/icjia-research-preview',
-        version: '0.2.0'
+        version: '0.3.0'
       }
     }
   },

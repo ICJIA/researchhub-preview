@@ -38,5 +38,8 @@ module.exports = {
         ...compressionPlugins
       )
     }
+  },
+  css: {
+    extract: true
   }
 }
