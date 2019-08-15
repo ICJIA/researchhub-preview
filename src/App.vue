@@ -1,14 +1,16 @@
 <template>
   <v-app>
-    <RHBaseToolbar>
+    <RHBaseToolbar :menu="false">
       <template v-slot:titleExtra>
         <span class="light"> Preview</span>
       </template>
     </RHBaseToolbar>
 
-    <router-view v-if="alive" />
+    <v-content>
+      <router-view v-if="alive" />
 
-    <ServerError v-else />
+      <ServerError v-else />
+    </v-content>
 
     <RHFooter :agency="agency" :github="github" />
   </v-app>

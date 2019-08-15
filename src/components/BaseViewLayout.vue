@@ -2,17 +2,12 @@
   <div class="font-lato">
     <BaseViewTitle :view="view" @toggle-view="onToggleView" />
 
-    <div class="text-xs-center my-2">
-      <v-icon color="warning">warning</v-icon>
+    <div class="text-center my-2">
+      <v-icon color="warning">mdi-alert</v-icon>
       <template>{{ ' This page is for preview only.' }}</template>
     </div>
 
-    <template v-if="fullView">
-      <slot></slot>
-    </template>
-    <v-container v-else>
-      <slot></slot>
-    </v-container>
+    <slot></slot>
   </div>
 </template>
 
@@ -27,10 +22,6 @@ export default {
     view: {
       type: Boolean,
       default: null
-    },
-    fullView: {
-      type: Boolean,
-      default: false
     }
   },
   methods: {

@@ -1,26 +1,24 @@
 <template>
   <BaseViewLayout>
-    <v-container>
-      <v-layout justify-center>
-        <v-flex xs12 sm10 xl8>
-          <SubmissionList
-            v-if="apps && apps.length"
-            :results="apps"
-            contentType="apps"
-          />
-          <SubmissionList
-            v-if="articles && articles.length"
-            :results="articles"
-            contentType="articles"
-          />
-          <SubmissionList
-            v-if="datasets && datasets.length"
-            :results="datasets"
-            contentType="datasets"
-          />
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <v-row justify="center">
+      <v-col cols="12" sm="10" lg="8" xl="7">
+        <SubmissionList
+          v-if="apps && apps.length"
+          :results="apps"
+          contentType="apps"
+        />
+        <SubmissionList
+          v-if="articles && articles.length"
+          :results="articles"
+          contentType="articles"
+        />
+        <SubmissionList
+          v-if="datasets && datasets.length"
+          :results="datasets"
+          contentType="datasets"
+        />
+      </v-col>
+    </v-row>
   </BaseViewLayout>
 </template>
 

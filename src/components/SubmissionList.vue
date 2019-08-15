@@ -9,10 +9,10 @@
           <span class="large">{{ result.title }}</span>
         </router-link>
 
-        <span v-if="result.external" class="external small">
-          <v-icon class="external">favorite</v-icon>
-          <span>This is an external contribution</span>
-        </span>
+        <template v-if="result.external">
+          <v-icon class="external pl-1" small>mdi-heart</v-icon>
+          <span class="external small">This is an external contribution</span>
+        </template>
       </li>
     </ul>
   </div>
