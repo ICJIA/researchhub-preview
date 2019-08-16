@@ -1,7 +1,12 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
+import Vuetify, { VAppBar, VNavigationDrawer } from 'vuetify/lib'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  components: {
+    VAppBar,
+    VNavigationDrawer
+  }
+})
 
 export default new Vuetify({
   theme: { disable: true }

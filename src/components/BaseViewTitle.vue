@@ -1,5 +1,5 @@
 <template>
-  <div class="view-title">
+  <div class="view-title font-lato">
     <v-col class="mx-auto py-2" cols="12" sm="10" lg="8" xl="7">
       <v-row align="center" no-gutters>
         <h4 class="light">
@@ -13,7 +13,14 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn color="white" height="24" outlined small @click="onClick">
+        <v-btn
+          v-if="page"
+          color="white"
+          height="24"
+          outlined
+          small
+          @click="onClick"
+        >
           <span class="small">{{ view ? 'show card' : 'show view' }}</span>
         </v-btn>
       </v-row>

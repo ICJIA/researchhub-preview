@@ -1,8 +1,8 @@
 <template>
-  <div class="font-lato">
-    <BaseViewTitle :view="view" @toggle-view="onToggleView" />
+  <div>
+    <BaseViewTitle :page="page" :view="view" @toggle-view="onToggleView" />
 
-    <div class="text-center my-2">
+    <div class="font-lato text-center my-2">
       <v-icon color="warning">mdi-alert</v-icon>
       <template>{{ ' This page is for preview only.' }}</template>
     </div>
@@ -22,6 +22,12 @@ export default {
     view: {
       type: Boolean,
       default: null
+    }
+  },
+  computed: {
+    page() {
+      const contentType = this.$route.path.split('/')[1]
+      return contentType.charAt(0).toUpperCase() + contentType.slice(1)
     }
   },
   methods: {
