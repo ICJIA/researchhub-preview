@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <RHBaseToolbar :menu="false">
+    <BaseToolbar :menu="false">
       <template v-slot:titleExtra>
         <span class="light"> Preview</span>
       </template>
-    </RHBaseToolbar>
+    </BaseToolbar>
 
     <v-content>
       <router-view v-if="alive" />
@@ -12,23 +12,17 @@
       <ServerError v-else />
     </v-content>
 
-    <RHFooter :agency="agency" :github="github" />
+    <Footer :agency="agency" :github="github" />
   </v-app>
 </template>
 
 <script>
 import { healthCheck } from '@/services/client'
-const RHBaseToolbar = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.BaseToolbar)
-const RHFooter = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.Footer)
 const ServerError = () => import('./components/ServerError')
 
 export default {
   name: 'App',
   components: {
-    RHBaseToolbar,
-    RHFooter,
     ServerError
   },
   data() {

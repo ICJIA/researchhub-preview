@@ -1,7 +1,7 @@
 <template>
   <PreviewLayout contentType="article">
     <template v-slot:card>
-      <RHArticleCard
+      <ArticleCard
         id="preview-check"
         v-if="item"
         :item="item"
@@ -9,7 +9,7 @@
       />
     </template>
     <template v-slot:view>
-      <RHArticleView
+      <ArticleView
         v-if="item"
         :item="item"
         :downloader="downloader"
@@ -24,17 +24,11 @@ import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchArticleBySlug } from '@/services/client'
 const PreviewLayout = () => import('@/components/PreviewLayout')
-const RHArticleCard = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.ArticleCard)
-const RHArticleView = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.ArticleView)
 
 export default {
   name: 'ArticlePreview',
   components: {
-    PreviewLayout,
-    RHArticleCard,
-    RHArticleView
+    PreviewLayout
   },
   data() {
     return {

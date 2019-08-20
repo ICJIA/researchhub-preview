@@ -1,7 +1,7 @@
 <template>
   <PreviewLayout contentType="dataset">
     <template v-slot:card>
-      <RHDatasetCard
+      <DatasetCard
         id="preview-check"
         v-if="item"
         :item="item"
@@ -9,7 +9,7 @@
       />
     </template>
     <template v-slot:view>
-      <RHDatasetView
+      <DatasetView
         v-if="item"
         :item="item"
         :downloader="downloader"
@@ -24,17 +24,11 @@ import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchDatasetBySlug } from '@/services/client'
 const PreviewLayout = () => import('@/components/PreviewLayout')
-const RHDatasetCard = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.DatasetCard)
-const RHDatasetView = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.DatasetView)
 
 export default {
   name: 'DatasetPreview',
   components: {
-    PreviewLayout,
-    RHDatasetCard,
-    RHDatasetView
+    PreviewLayout
   },
   data() {
     return {
