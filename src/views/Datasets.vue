@@ -23,11 +23,15 @@
 import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchDatasetBySlug } from '@/services/client'
+const DatasetCard = () => import('icjia-research-lib').then(m => m.DatasetCard)
+const DatasetView = () => import('icjia-research-lib').then(m => m.DatasetView)
 const PreviewLayout = () => import('@/components/PreviewLayout')
 
 export default {
   name: 'DatasetPreview',
   components: {
+    DatasetCard,
+    DatasetView,
     PreviewLayout
   },
   data() {

@@ -18,11 +18,15 @@
 
 <script>
 import { healthCheck } from '@/services/client'
+const BaseToolbar = () => import('icjia-research-lib').then(m => m.BaseToolbar)
+const Footer = () => import('icjia-research-lib').then(m => m.Footer)
 const ServerError = () => import('./components/ServerError')
 
 export default {
   name: 'App',
   components: {
+    BaseToolbar,
+    Footer,
     ServerError
   },
   data() {

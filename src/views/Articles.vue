@@ -23,11 +23,15 @@
 import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchArticleBySlug } from '@/services/client'
+const ArticleCard = () => import('icjia-research-lib').then(m => m.ArticleCard)
+const ArticleView = () => import('icjia-research-lib').then(m => m.ArticleView)
 const PreviewLayout = () => import('@/components/PreviewLayout')
 
 export default {
   name: 'ArticlePreview',
   components: {
+    ArticleCard,
+    ArticleView,
     PreviewLayout
   },
   data() {
