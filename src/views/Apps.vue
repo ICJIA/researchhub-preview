@@ -1,10 +1,10 @@
 <template>
   <PreviewLayout contentType="app">
     <template v-slot:card>
-      <RHAppCard id="preview-check" v-if="item" :item="item" :preview="true" />
+      <AppCard id="preview-check" v-if="item" :item="item" :preview="true" />
     </template>
     <template v-slot:view>
-      <RHAppView v-if="item" :item="item" :preview="true" />
+      <AppView v-if="item" :item="item" :preview="true" />
     </template>
   </PreviewLayout>
 </template>
@@ -12,18 +12,16 @@
 <script>
 import { store } from '@/store'
 import { fetchAppBySlug } from '@/services/client'
+const AppCard = () => import('icjia-research-lib').then(m => m.AppCard)
+const AppView = () => import('icjia-research-lib').then(m => m.AppView)
 const PreviewLayout = () => import('@/components/PreviewLayout')
-const RHAppCard = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.AppCard)
-const RHAppView = () =>
-  import('icjia-research-lib/lib/cjs').then(lib => lib.AppView)
 
 export default {
   name: 'AppPreview',
   components: {
-    PreviewLayout,
-    RHAppCard,
-    RHAppView
+    AppCard,
+    AppView,
+    PreviewLayout
   },
   data() {
     return {

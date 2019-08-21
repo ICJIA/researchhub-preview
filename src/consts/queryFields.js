@@ -40,6 +40,7 @@ const articleFields = [
 
 const datasetFields = [
   ...baseFields,
+  'project',
   'sources',
   'timeperiod',
   'unit',
