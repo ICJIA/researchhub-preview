@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <BaseToolbar :menu="false">
+    <BaseToolbar :menu="false" logoPath="./icjia-logo.png">
       <template v-slot:titleExtra>
         <span class="light"> Preview</span>
       </template>
