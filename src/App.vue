@@ -2,7 +2,7 @@
   <v-app>
     <BaseToolbar :menu="false" logoPath="./icjia-logo.png">
       <template v-slot:titleExtra>
-        <span class="light"> Preview</span>
+        <span class="font-weight-light"> Preview</span>
       </template>
     </BaseToolbar>
 
@@ -38,7 +38,7 @@ export default {
       },
       github: {
         url: 'https://github.com/icjia/icjia-research-preview',
-        version: '1.0.0-beta.1'
+        version: '1.0.0-beta.2'
       }
     }
   },
