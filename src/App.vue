@@ -18,7 +18,7 @@
 
 <script>
 import { healthCheck } from '@/services/client'
-const BaseToolbar = () => import('icjia-research-lib').then(m => m.BaseToolbar)
+import { BaseToolbar } from 'icjia-research-lib'
 const Footer = () => import('icjia-research-lib').then(m => m.Footer)
 const ServerError = () => import('./components/ServerError')
 
