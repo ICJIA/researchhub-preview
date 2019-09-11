@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <BaseToolbar :menu="false" logoPath="./icjia-logo.png">
+    <BaseToolbar :menu="false" logoPath="/icjia-logo.png">
       <template v-slot:titleExtra>
         <span class="font-weight-light"> Preview</span>
       </template>
@@ -18,7 +18,7 @@
 
 <script>
 import { healthCheck } from '@/services/client'
-const BaseToolbar = () => import('icjia-research-lib').then(m => m.BaseToolbar)
+import { BaseToolbar } from 'icjia-research-lib'
 const Footer = () => import('icjia-research-lib').then(m => m.Footer)
 const ServerError = () => import('./components/ServerError')
 
@@ -38,7 +38,7 @@ export default {
       },
       github: {
         url: 'https://github.com/icjia/icjia-research-preview',
-        version: '1.0.0-beta.2'
+        version: '1.0.0-beta.3'
       }
     }
   },
