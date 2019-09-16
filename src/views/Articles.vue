@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { saveAs } from 'file-saver'
 import { store } from '@/store'
 import { fetchArticleBySlug } from '@/services/client'
 const ArticleCard = () => import('icjia-research-lib').then(m => m.ArticleCard)
@@ -54,9 +53,8 @@ export default {
   },
   methods: {
     async downloader(type) {
-      const file = this.item[`${type}file`]
-      const url = `${process.env.VUE_APP_API_BASE_URL}/${file.url}`
-      saveAs(url, decodeURI(file.name))
+      const { hash, ext } = this.item[`${type}file`]
+      window.open(`/files/${hash}${ext}`, '_blank')
     }
   }
 }
