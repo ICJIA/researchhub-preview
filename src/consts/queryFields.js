@@ -32,8 +32,8 @@ const articleFields = [
   'markdown',
   'doi',
   'mainfiletype',
-  'mainfile { name url }',
-  'extrafile { name url }',
+  'mainfile { hash ext }',
+  'extrafile { hash ext }',
   'apps (sort: "date:desc", where: { status: "published" }) { title slug }',
   'datasets (sort: "date:desc", where: { status: "published" }) { title slug }'
 ]
@@ -47,7 +47,7 @@ const datasetFields = [
   'variables',
   'description',
   'notes',
-  'datafile { name url }',
+  'datafile { hash ext }',
   'apps (sort: "date:desc", where: { status: "published" }) { title slug }',
   'articles (sort: "date:desc", where: { status: "published" }) { title slug }'
 ]
