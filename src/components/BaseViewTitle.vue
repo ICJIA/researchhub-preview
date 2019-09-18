@@ -4,10 +4,11 @@
       <v-row align="center" no-gutters>
         <h4 class="font-weight-light">
           <template>{{ 'ICJIA Research Hub' }}</template>
-          <v-icon color="white">mdi-chevron-right</v-icon>
+          <v-icon color="white">{{ mdiChevronRight }}</v-icon>
           <template>{{ 'Preview' }}</template>
           <template v-if="page">
-            <v-icon color="white">mdi-chevron-right</v-icon>{{ page }}
+            <v-icon color="white">{{ mdiChevronRight }}</v-icon>
+            <template>{{ page }}</template>
           </template>
         </h4>
 
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+import { mdiChevronRight } from '@mdi/js'
+
 export default {
   props: {
     page: {
@@ -38,6 +41,11 @@ export default {
     view: {
       type: Boolean,
       default: true
+    }
+  },
+  data() {
+    return {
+      mdiChevronRight
     }
   },
   methods: {
