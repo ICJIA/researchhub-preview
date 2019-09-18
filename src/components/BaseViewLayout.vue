@@ -3,7 +3,7 @@
     <BaseViewTitle :page="page" :view="view" @toggle-view="onToggleView" />
 
     <div class="font-lato text-center my-2">
-      <v-icon color="warning">mdi-alert</v-icon>
+      <v-icon color="warning">{{ mdiAlert }}</v-icon>
       <template>{{ ' This page is for preview only.' }}</template>
     </div>
 
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mdiAlert } from '@mdi/js'
 const BaseViewTitle = () => import('@/components/BaseViewTitle')
 
 export default {
@@ -22,6 +23,11 @@ export default {
     view: {
       type: Boolean,
       default: null
+    }
+  },
+  data() {
+    return {
+      mdiAlert
     }
   },
   computed: {
