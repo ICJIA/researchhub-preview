@@ -1,6 +1,6 @@
 <template>
   <PreviewLayout contentType="article">
-    <template v-slot:card>
+    <template #card>
       <ArticleCard
         id="preview-check"
         v-if="item"
@@ -8,7 +8,7 @@
         :preview="true"
       />
     </template>
-    <template v-slot:view>
+    <template #view>
       <ArticleView
         v-if="item"
         :item="item"

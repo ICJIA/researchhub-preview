@@ -1,9 +1,9 @@
 <template>
   <PreviewLayout contentType="app">
-    <template v-slot:card>
+    <template #card>
       <AppCard id="preview-check" v-if="item" :item="item" :preview="true" />
     </template>
-    <template v-slot:view>
+    <template #view>
       <AppView v-if="item" :item="item" :preview="true" />
     </template>
   </PreviewLayout>

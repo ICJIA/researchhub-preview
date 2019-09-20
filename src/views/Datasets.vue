@@ -1,6 +1,6 @@
 <template>
   <PreviewLayout contentType="dataset">
-    <template v-slot:card>
+    <template #card>
       <DatasetCard
         id="preview-check"
         v-if="item"
@@ -8,7 +8,7 @@
         :preview="true"
       />
     </template>
-    <template v-slot:view>
+    <template #view>
       <DatasetView
         v-if="item"
         :item="item"
