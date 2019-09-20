@@ -27,8 +27,14 @@ import { mdiCharity } from '@mdi/js'
 
 export default {
   props: {
-    results: Array,
-    contentType: String
+    results: {
+      type: Array,
+      default: null
+    },
+    contentType: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     contentTypeUpper() {

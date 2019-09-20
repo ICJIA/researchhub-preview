@@ -1,9 +1,9 @@
 <template>
-  <PreviewLayout contentType="article">
+  <PreviewLayout content-type="article">
     <template #card>
       <ArticleCard
-        id="preview-check"
         v-if="item"
+        id="preview-check"
         :item="item"
         :preview="true"
       />
@@ -11,8 +11,8 @@
     <template #view>
       <ArticleView
         v-if="item"
-        :item="item"
         :downloader="downloader"
+        :item="item"
         :preview="true"
       />
     </template>

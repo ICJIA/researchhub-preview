@@ -34,7 +34,10 @@ export default {
     BaseViewLayout
   },
   props: {
-    contentType: String
+    contentType: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {

@@ -20,10 +20,7 @@ export default {
     BaseViewTitle
   },
   props: {
-    view: {
-      type: Boolean,
-      default: null
-    }
+    view: Boolean
   },
   computed: {
     page() {

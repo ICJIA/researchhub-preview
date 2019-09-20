@@ -4,18 +4,18 @@
       <v-col cols="12" sm="10" lg="8" xl="7">
         <SubmissionList
           v-if="apps && apps.length"
+          content-type="apps"
           :results="apps"
-          contentType="apps"
         />
         <SubmissionList
           v-if="articles && articles.length"
+          content-type="articles"
           :results="articles"
-          contentType="articles"
         />
         <SubmissionList
           v-if="datasets && datasets.length"
+          content-type="datasets"
           :results="datasets"
-          contentType="datasets"
         />
       </v-col>
     </v-row>
