@@ -10,7 +10,9 @@
         </router-link>
 
         <template v-if="result.external">
-          <v-icon class="marker-external pl-1" small>{{ mdiCharity }}</v-icon>
+          <v-icon class="marker-external pl-1" small>{{
+            $options.static.mdiCharity
+          }}</v-icon>
           <span class="marker-external small">
             <template>{{ 'This is an external contribution' }}</template>
           </span>
@@ -28,17 +30,15 @@ export default {
     results: Array,
     contentType: String
   },
-  data() {
-    return {
-      mdiCharity
-    }
-  },
   computed: {
     contentTypeUpper() {
       return (
         this.contentType.charAt(0).toUpperCase() + this.contentType.slice(1)
       )
     }
+  },
+  static: {
+    mdiCharity
   }
 }
 </script>

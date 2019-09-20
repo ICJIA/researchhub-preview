@@ -4,10 +4,10 @@
       <v-row align="center" no-gutters>
         <h4 class="font-weight-light">
           <template>{{ 'ICJIA Research Hub' }}</template>
-          <v-icon color="white">{{ mdiChevronRight }}</v-icon>
+          <v-icon color="white">{{ $options.static.mdiChevronRight }}</v-icon>
           <template>{{ 'Preview' }}</template>
           <template v-if="page">
-            <v-icon color="white">{{ mdiChevronRight }}</v-icon>
+            <v-icon color="white">{{ $options.static.mdiChevronRight }}</v-icon>
             <template>{{ page }}</template>
           </template>
         </h4>
@@ -43,15 +43,13 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      mdiChevronRight
-    }
-  },
   methods: {
     onClick() {
       this.$emit('toggle-view')
     }
+  },
+  static: {
+    mdiChevronRight
   }
 }
 </script>
