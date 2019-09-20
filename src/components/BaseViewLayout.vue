@@ -1,6 +1,10 @@
 <template>
   <div>
-    <BaseViewTitle :page="page" :view="view" @toggle-view="onToggleView" />
+    <BaseViewTitle
+      :page="$route.path.split('/')[1]"
+      :view="view"
+      @toggle-view="onToggleView"
+    />
 
     <div class="font-lato text-center my-2">
       <v-icon color="warning">{{ $options.static.mdiAlert }}</v-icon>
@@ -21,12 +25,6 @@ export default {
   },
   props: {
     view: Boolean
-  },
-  computed: {
-    page() {
-      const contentType = this.$route.path.split('/')[1]
-      return contentType.charAt(0).toUpperCase() + contentType.slice(1)
-    }
   },
   methods: {
     onToggleView() {

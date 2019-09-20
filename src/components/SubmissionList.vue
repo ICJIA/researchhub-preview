@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ contentTypeUpper }}</h2>
+    <h2 class="text-capitalize">{{ contentType }}</h2>
     <ul>
       <li v-for="result in results" :key="result.title" class="my-2 font-lato">
         <template>{{ result.date.slice(0, 10) + ' | ' }}</template>
@@ -34,13 +34,6 @@ export default {
     contentType: {
       type: String,
       default: ''
-    }
-  },
-  computed: {
-    contentTypeUpper() {
-      return (
-        this.contentType.charAt(0).toUpperCase() + this.contentType.slice(1)
-      )
     }
   },
   static: {

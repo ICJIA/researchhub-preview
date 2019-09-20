@@ -2,10 +2,10 @@
   <div class="view-title font-lato">
     <v-col class="mx-auto py-2" cols="12" sm="10" lg="8" xl="7">
       <v-row align="center" no-gutters>
-        <h4 class="font-weight-light">
+        <h4 class="font-weight-light text-capitalize">
           <template>{{ 'ICJIA Research Hub' }}</template>
           <v-icon color="white">{{ $options.static.mdiChevronRight }}</v-icon>
-          <template>{{ 'Preview' }}</template>
+          <template>{{ 'preview' }}</template>
           <template v-if="page">
             <v-icon color="white">{{ $options.static.mdiChevronRight }}</v-icon>
             <template>{{ page }}</template>
