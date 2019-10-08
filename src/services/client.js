@@ -1,9 +1,10 @@
 import axios from 'axios'
 import NProgress from 'nprogress'
+import { apiBaseURL } from '@/config'
 import { appFields, articleFields, datasetFields } from '@/consts/queryFields'
 
 const client = axios.create({
-  baseURL: process.env.VUE_APP_API_BASE_URL
+  baseURL: apiBaseURL
 })
 
 client.interceptors.request.use(config => {
