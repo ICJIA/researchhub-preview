@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { agency, github } from '@/config'
 import { healthCheck } from '@/services/client'
 import { BaseToolbar } from 'icjia-research-lib'
 const Footer = () => import('icjia-research-lib').then(m => m.Footer)
@@ -38,14 +39,8 @@ export default {
     this.alive = await healthCheck()
   },
   static: {
-    agency: {
-      name: 'Illinois Criminal Justice Information Authority',
-      url: 'http://www.icjia.state.il.us/'
-    },
-    github: {
-      url: 'https://github.com/icjia/icjia-research-preview',
-      version: '1.0.0-beta.5'
-    },
+    agency,
+    github,
     logoPath: process.env.BASE_URL + 'icjia-logo.png'
   }
 }
