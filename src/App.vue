@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <BaseToolbar logo-path="/icjia-logo.png" :menu="false">
+    <BaseToolbar :logo-path="$options.static.logoPath" :menu="false">
       <template #titleExtra>
         <span class="font-weight-light"> Preview</span>
       </template>
@@ -45,7 +45,8 @@ export default {
     github: {
       url: 'https://github.com/icjia/icjia-research-preview',
       version: '1.0.0-beta.5'
-    }
+    },
+    logoPath: process.env.BASE_URL + 'icjia-logo.png'
   }
 }
 </script>
