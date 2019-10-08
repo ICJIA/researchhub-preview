@@ -5,9 +5,7 @@ module.exports = {
   },
   apiBaseURL:
     process.env.VUE_APP_API_BASE_URL || 'https://research.icjia-api.cloud',
-  github: {
-    url: 'https://github.com/icjia/icjia-research-preview',
-    version: '1.0.0-beta.5'
-  },
-  publicPath: process.env.VUE_APP_PUBLIC_PATH || '/researchhub/preview/'
+  github: 'https://github.com/icjia/icjia-research-preview',
+  publicPath: process.env.VUE_APP_PUBLIC_PATH || '/researchhub/preview/',
+  version: '1.0.0-beta.5'
 }
