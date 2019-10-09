@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { agency, github, version } from '@/config'
+import { github } from '@/config'
 import { healthCheck } from '@/services/client'
 import { BaseToolbar } from 'icjia-research-lib'
 const Footer = () => import('icjia-research-lib').then(m => m.Footer)
@@ -39,11 +39,7 @@ export default {
     this.alive = await healthCheck()
   },
   static: {
-    agency,
-    github: {
-      url: github,
-      version
-    },
+    github,
     logoPath: process.env.BASE_URL + 'icjia-logo.png'
   }
 }
