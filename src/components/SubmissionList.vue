@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ contentTypeUpper }}</h2>
+    <h2 class="text-capitalize">{{ contentType }}</h2>
     <ul>
       <li v-for="result in results" :key="result.title" class="my-2 font-lato">
         <template>{{ result.date.slice(0, 10) + ' | ' }}</template>
@@ -10,7 +10,9 @@
         </router-link>
 
         <template v-if="result.external">
-          <v-icon class="marker-external pl-1" small>{{ mdiCharity }}</v-icon>
+          <v-icon class="marker-external pl-1" small>{{
+            $options.static.mdiCharity
+          }}</v-icon>
           <span class="marker-external small">
             <template>{{ 'This is an external contribution' }}</template>
           </span>
@@ -25,20 +27,17 @@ import { mdiCharity } from '@mdi/js'
 
 export default {
   props: {
-    results: Array,
-    contentType: String
-  },
-  data() {
-    return {
-      mdiCharity
+    results: {
+      type: Array,
+      default: null
+    },
+    contentType: {
+      type: String,
+      default: ''
     }
   },
-  computed: {
-    contentTypeUpper() {
-      return (
-        this.contentType.charAt(0).toUpperCase() + this.contentType.slice(1)
-      )
-    }
+  static: {
+    mdiCharity
   }
 }
 </script>

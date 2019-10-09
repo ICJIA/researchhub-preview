@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <BaseToolbar :menu="false" logoPath="/icjia-logo.png">
-      <template v-slot:titleExtra>
+    <BaseToolbar :logo-path="$options.static.logoPath" :menu="false">
+      <template #titleExtra>
         <span class="font-weight-light"> Preview</span>
       </template>
     </BaseToolbar>
@@ -12,11 +12,12 @@
       <ServerError v-else />
     </v-content>
 
-    <Footer :agency="agency" :github="github" />
+    <Footer :agency="$options.static.agency" :github="$options.static.github" />
   </v-app>
 </template>
 
 <script>
+import { github } from '@/config'
 import { healthCheck } from '@/services/client'
 import { BaseToolbar } from 'icjia-research-lib'
 const Footer = () => import('icjia-research-lib').then(m => m.Footer)
@@ -31,19 +32,15 @@ export default {
   },
   data() {
     return {
-      alive: true,
-      agency: {
-        name: 'Illinois Criminal Justice Information Authority',
-        url: 'http://www.icjia.state.il.us/'
-      },
-      github: {
-        url: 'https://github.com/icjia/icjia-research-preview',
-        version: '1.0.0-beta.5'
-      }
+      alive: true
     }
   },
   async created() {
     this.alive = await healthCheck()
+  },
+  static: {
+    github,
+    logoPath: process.env.BASE_URL + 'icjia-logo.png'
   }
 }
 </script>

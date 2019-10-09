@@ -1,9 +1,13 @@
 <template>
   <div>
-    <BaseViewTitle :page="page" :view="view" @toggle-view="onToggleView" />
+    <BaseViewTitle
+      :page="$route.path.split('/')[1]"
+      :view="view"
+      @toggle-view="onToggleView"
+    />
 
     <div class="font-lato text-center my-2">
-      <v-icon color="warning">{{ mdiAlert }}</v-icon>
+      <v-icon color="warning">{{ $options.static.mdiAlert }}</v-icon>
       <template>{{ ' This page is for preview only.' }}</template>
     </div>
 
@@ -20,26 +24,15 @@ export default {
     BaseViewTitle
   },
   props: {
-    view: {
-      type: Boolean,
-      default: null
-    }
-  },
-  data() {
-    return {
-      mdiAlert
-    }
-  },
-  computed: {
-    page() {
-      const contentType = this.$route.path.split('/')[1]
-      return contentType.charAt(0).toUpperCase() + contentType.slice(1)
-    }
+    view: Boolean
   },
   methods: {
     onToggleView() {
       this.$emit('update:view', !this.view)
     }
+  },
+  static: {
+    mdiAlert
   }
 }
 </script>
