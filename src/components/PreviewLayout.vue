@@ -16,8 +16,7 @@
           v-else
           class="mx-auto"
           cols="12"
-          sm="6"
-          :lg="contentType === 'app' ? 4 : 6"
+          :md="contentType === 'app' ? 4 : 6"
         >
           <slot name="card"></slot>
         </v-col>
