@@ -1,6 +1,6 @@
 <template>
   <BaseViewLayout>
-    <v-row justify="center">
+    <v-row justify="center" no-gutters>
       <v-col cols="12" sm="10" lg="8" xl="7">
         <SubmissionList
           v-if="apps && apps.length"
