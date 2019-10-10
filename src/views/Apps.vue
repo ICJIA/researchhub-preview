@@ -1,7 +1,13 @@
 <template>
   <PreviewLayout content-type="app">
     <template #card>
-      <AppCard v-if="item" id="preview-check" :item="item" :preview="true" />
+      <AppCard
+        v-if="item"
+        id="preview-check"
+        :horizontal="$vuetify.breakpoint.smOnly"
+        :item="item"
+        :preview="true"
+      />
     </template>
     <template #view>
       <AppView v-if="item" :item="item" :preview="true" />

@@ -4,6 +4,7 @@
       <ArticleCard
         v-if="item"
         id="preview-check"
+        :horizontal="$vuetify.breakpoint.smAndUp"
         :item="item"
         :preview="true"
       />
