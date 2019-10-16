@@ -10,19 +10,19 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: () => import('./views/Home')
+      component: () => import('@/views/Home')
     },
     {
       path: '/apps/:slug',
-      component: () => import('./views/Apps')
+      component: () => import('@/views/Apps')
     },
     {
       path: '/articles/:slug',
-      component: () => import('./views/Articles')
+      component: () => import('@/views/Articles')
     },
     {
       path: '/datasets/:slug',
-      component: () => import('./views/Datasets')
+      component: () => import('@/views/Datasets')
     },
     {
       path: '/page-not-found',
