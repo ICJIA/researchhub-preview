@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { filesBaseURL } from '@/config'
 import { store } from '@/store'
 import { fetchDatasetBySlug } from '@/services/client'
 const DatasetCard = () => import('icjia-research-lib').then(m => m.DatasetCard)
@@ -54,7 +55,7 @@ export default {
   methods: {
     async downloader() {
       const { hash, ext } = this.item.datafile
-      window.open(`/files/${hash}${ext}`, '_blank')
+      window.open(filesBaseURL + `/${hash}${ext}`, '_blank')
     }
   }
 }
