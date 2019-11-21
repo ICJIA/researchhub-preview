@@ -18,8 +18,8 @@
 <script>
 import { store } from '@/store'
 import { fetchAppBySlug } from '@/services/client'
-const AppCard = () => import('icjia-research-lib').then(m => m.AppCard)
-const AppView = () => import('icjia-research-lib').then(m => m.AppView)
+const AppCard = () => import('researchhub-lib').then(m => m.AppCard)
+const AppView = () => import('researchhub-lib').then(m => m.AppView)
 const PreviewLayout = () => import('@/components/PreviewLayout')
 
 export default {
