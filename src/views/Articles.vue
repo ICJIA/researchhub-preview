@@ -24,8 +24,8 @@
 import { filesBaseURL } from '@/config'
 import { store } from '@/store'
 import { fetchArticleBySlug } from '@/services/client'
-const ArticleCard = () => import('icjia-research-lib').then(m => m.ArticleCard)
-const ArticleView = () => import('icjia-research-lib').then(m => m.ArticleView)
+const ArticleCard = () => import('researchhub-lib').then(m => m.ArticleCard)
+const ArticleView = () => import('researchhub-lib').then(m => m.ArticleView)
 const PreviewLayout = () => import('@/components/PreviewLayout')
 
 export default {

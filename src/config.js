@@ -4,6 +4,6 @@ module.exports = {
   filesBaseURL:
     process.env.VUE_APP_FILES_BASE_URL ||
     'https://icjia.illinois.gov/researchhub/files',
-  github: 'https://github.com/icjia/icjia-research-preview',
+  github: 'https://github.com/icjia/researchhub-preview',
   publicPath: process.env.VUE_APP_PUBLIC_PATH || '/researchhub/preview/'
 }

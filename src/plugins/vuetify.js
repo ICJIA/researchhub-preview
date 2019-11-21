@@ -5,7 +5,7 @@ import Vuetify, {
   VFooter,
   VNavigationDrawer
 } from 'vuetify/lib'
-import { ResearchHubLibIcons } from 'icjia-research-lib'
+import { ResearchHubLibIcons } from 'researchhub-lib'
 
 Vue.use(Vuetify, {
   components: {

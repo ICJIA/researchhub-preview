@@ -19,8 +19,8 @@
 <script>
 import { github } from '@/config'
 import { healthCheck } from '@/services/client'
-import { BaseToolbar } from 'icjia-research-lib'
-const Footer = () => import('icjia-research-lib').then(m => m.Footer)
+import { BaseToolbar } from 'researchhub-lib'
+const Footer = () => import('researchhub-lib').then(m => m.Footer)
 const ServerError = () => import('./components/ServerError')
 
 export default {
