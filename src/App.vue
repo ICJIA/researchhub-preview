@@ -7,8 +7,8 @@
     </BaseToolbar>
 
     <v-content>
+      <AlertCOVID ref="alert" />
       <router-view v-if="alive" />
-
       <ServerError v-else />
     </v-content>
 
@@ -20,12 +20,14 @@
 import { github } from '@/config'
 import { healthCheck } from '@/services/client'
 import { BaseToolbar } from 'researchhub-lib'
+const AlertCOVID = () => import('researchhub-lib').then(m => m.AlertCOVID)
 const Footer = () => import('researchhub-lib').then(m => m.Footer)
 const ServerError = () => import('./components/ServerError')
 
 export default {
   name: 'App',
   components: {
+    AlertCOVID,
     BaseToolbar,
     Footer,
     ServerError
@@ -33,6 +35,11 @@ export default {
   data() {
     return {
       alive: true
+    }
+  },
+  watch: {
+    $route() {
+      if (this.$refs.alert) this.$refs.alert.reset()
     }
   },
   async created() {
