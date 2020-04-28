@@ -62,10 +62,12 @@ const fetchDatasets = async () =>
  * @param {String} slug String
  */
 const fetchOneBySlug = contentType => async ({ fields, slug }) =>
-  (await fetchData(contentType)({
-    params: `where: { slug: "${slug}", status: "submitted" }`,
-    fields
-  }))[0]
+  (
+    await fetchData(contentType)({
+      params: `where: { slug: "${slug}", status: "submitted" }`,
+      fields
+    })
+  )[0]
 
 /**
  * Fetch a list of publisehd contents.
