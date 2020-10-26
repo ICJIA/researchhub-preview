@@ -6,11 +6,11 @@
       </template>
     </BaseToolbar>
 
-    <v-content>
+    <v-main>
       <AlertCOVID ref="alert" />
       <router-view v-if="alive" />
       <ServerError v-else />
-    </v-content>
+    </v-main>
 
     <Footer :agency="$options.static.agency" :github="$options.static.github" />
   </v-app>
